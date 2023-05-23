@@ -23,7 +23,7 @@ let package = Package(
         .target(
             name: "ExtensionLibrary",
             dependencies: [],
-            path: "Sources/**"),
+            path: "Sources/ExtensionLibrary/**"),
         .testTarget(
             name: "ExtensionLibraryTests",
             dependencies: ["ExtensionLibrary"]),
