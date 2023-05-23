@@ -9,8 +9,9 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "ExtensionLibrary",
-            targets: ["Bool", "Date", "Double", "Int", "String", "UIColor", "UIDeviceOrientation", "UIImage",
-                     "UIInterfaceOrientation", "UITableView", "UIView", "ExtensionLibrary"]),
+            targets: ["ExtensionLibrary"]),
+                //["Bool", "Date", "Double", "Int", "String", "UIColor", "UIDeviceOrientation", "UIImage",
+                  //   "UIInterfaceOrientation", "UITableView", "UIView", "ExtensionLibrary"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,21 +22,22 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "ExtensionLibrary",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources/**"),
         .testTarget(
             name: "ExtensionLibraryTests",
             dependencies: ["ExtensionLibrary"]),
         
-        .target(name: "Bool", path: "Sources/Bool"),
-        .target(name: "Date", path: "Sources/Date"),
-        .target(name: "Double", path: "Sources/Double"),
-        .target(name: "Int", path: "Sources/Int"),
-        .target(name: "String", path: "Sources/String"),
-        .target(name: "UIColor", path: "Sources/UIColor"),
-        .target(name: "UIDeviceOrientation", path: "Sources/UIDeviceOrientation"),
-        .target(name: "UIImage", path: "Sources/UIImage"),
-        .target(name: "UIInterfaceOrientation", path: "Sources/UIInterfaceOrientation"),
-        .target(name: "UITableView", path: "Sources/UITableView"),
-        .target(name: "UIView", path: "Sources/UIView"),
+//        .target(name: "Bool", path: "Sources"),
+//        .target(name: "Date", path: "Sources/Date"),
+//        .target(name: "Double", path: "Sources/Double"),
+//        .target(name: "Int", path: "Sources/Int"),
+//        .target(name: "String", path: "Sources/String"),
+//        .target(name: "UIColor", path: "Sources/UIColor"),
+//        .target(name: "UIDeviceOrientation", path: "Sources/UIDeviceOrientation"),
+//        .target(name: "UIImage", path: "Sources/UIImage"),
+//        .target(name: "UIInterfaceOrientation", path: "Sources/UIInterfaceOrientation"),
+//        .target(name: "UITableView", path: "Sources/UITableView"),
+//        .target(name: "UIView", path: "Sources/UIView"),
     ]
 )
