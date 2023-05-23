@@ -9,7 +9,7 @@ import Foundation
 
 extension Date{
     
-    func daysBetween(fromDateTime: Date, toDateTime: Date) -> Int {
+    public func daysBetween(fromDateTime: Date, toDateTime: Date) -> Int {
         let uintFlag = NSCalendar.Unit.day
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let components : DateComponents = ((calendar as NSCalendar?)?.components(uintFlag, from: fromDateTime, to: toDateTime, options: NSCalendar.Options.init(rawValue: 0)))!
@@ -17,27 +17,27 @@ extension Date{
         return components.day! + 1
     }
     
-    var startOfMonth: Date {
+    public var startOfMonth: Date {
         let interval = Calendar.current.dateInterval(of: .month, for: self)
         return (interval?.start.toLocalTime)! // Without toLocalTime it give last months last date
     }
 
-    var endOfMonth: Date {
+    public var endOfMonth: Date {
         let interval = Calendar.current.dateInterval(of: .month, for: self)
         return interval!.end
     }
     
-    var toLocalTime: Date {
+    public var toLocalTime: Date {
         let timezone    = TimeZone.current
         let seconds     = TimeInterval(timezone.secondsFromGMT(for: self))
         return Date(timeInterval: seconds, since: self)
     }
     
-    var firstStatrdWeek: Int{
+    public var firstStatrdWeek: Int{
         NSCalendar.current.component(.weekday, from: self.startOfMonth)
     }
     
-    var days: Int{
+    public var days: Int{
         var dateComponents = DateComponents()
         dateComponents.year = Calendar.current.component(.year,  from: self)
         dateComponents.month = Calendar.current.component(.month,  from: self)
@@ -50,13 +50,13 @@ extension Date{
         }
     }
     
-    var localTime: Date {
+    public var localTime: Date {
         let timezone = TimeZone.current
         let seconds = TimeInterval(timezone.secondsFromGMT(for: self))
         return Date(timeInterval: seconds, since: self)
     }
     
-    var string_yyyyMMdd: String{
+    public var string_yyyyMMdd: String{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
         return formatter.string(from: self)

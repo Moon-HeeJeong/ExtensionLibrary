@@ -10,7 +10,7 @@ let package = Package(
         .library(
             name: "ExtensionLibrary",
             targets: ["Bool", "Date", "Double", "Int", "String", "UIColor", "UIDeviceOrientation", "UIImage",
-                     "UIInterfaceOrientation", "UITableView", "UIView"]),
+                     "UIInterfaceOrientation", "UITableView", "UIView", "ExtensionLibrary"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.

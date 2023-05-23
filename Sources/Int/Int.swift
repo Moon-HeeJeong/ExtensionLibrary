@@ -8,18 +8,18 @@
 import Foundation
 
 extension Int{
-    var toCGFloat: CGFloat{
+    public var toCGFloat: CGFloat{
         CGFloat(self)
     }
     
-    var decimal: String?{
+    public var decimal: String?{
         let formater = NumberFormatter()
         formater.numberStyle = .decimal
         formater.locale = Locale.current
         return formater.string(from: NSNumber.init(value: self))
     }
     
-    var timeSecToStr: String{
+    public var timeSecToStr: String{
         let sec = (self) % 60
         let min = (self) / 60
         

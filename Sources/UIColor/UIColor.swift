@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIColor{
-    func rgb() -> Int? {
+    public func rgb() -> Int? {
         var fRed: CGFloat = 0
         var fGreen: CGFloat = 0
         var fBlue: CGFloat = 0
@@ -28,7 +28,7 @@ extension UIColor{
         }
     }
     
-    convenience init(hexString: String, alpha:CGFloat? = 1.0) {
+    public convenience init(hexString: String, alpha:CGFloat? = 1.0) {
         
         func intFromHexString(hexStr: String) -> UInt32 {
             var hexInt: UInt32 = 0
@@ -48,11 +48,11 @@ extension UIColor{
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    func lighter(amount : CGFloat = 0.25) -> UIColor {
+    public func lighter(amount : CGFloat = 0.25) -> UIColor {
         return hueColorWithBrightnessAmount(amount: 1 + amount)
     }
     
-    func darker(amount : CGFloat = 0.25) -> UIColor {
+    public func darker(amount : CGFloat = 0.25) -> UIColor {
         return hueColorWithBrightnessAmount(amount: 1 - amount)
     }
     

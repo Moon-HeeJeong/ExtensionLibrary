@@ -9,10 +9,8 @@ import Foundation
 import UIKit
 
 extension String{
-    
-//    extension String {
 
-    var isContainsEmoji: Bool {
+    public var isContainsEmoji: Bool {
         for scalar in unicodeScalars {
             switch scalar.value {
             case 0x1F600...0x1F64F, // Emoticons
@@ -31,11 +29,11 @@ extension String{
 
 //    }
     
-    var localized: String{
+    public var localized: String{
         return NSLocalizedString(self, comment: "")
     }
     
-    var date: Date? {
+    public var date: Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         if let date = dateFormatter.date(from: self){
@@ -46,7 +44,7 @@ extension String{
         }
     }
     
-    var date_no_optional: Date {
+    public var date_no_optional: Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         if let date = dateFormatter.date(from: self){
@@ -57,7 +55,7 @@ extension String{
         }
     }
     
-    var date_m_d_week: String {
+    public var date_m_d_week: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "M.d (E)"
         if let _ = self.date{
@@ -66,7 +64,7 @@ extension String{
         return ""
     }
     
-    var date_yyyy_m_dd: String {
+    public var date_yyyy_m_dd: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.M.d"
         if let _ = self.date{
@@ -75,7 +73,7 @@ extension String{
         return ""
     }
     
-    var date_m_dd: String {
+    public var date_m_dd: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "M.d"
         if let _ = self.date{
@@ -84,7 +82,7 @@ extension String{
         return ""
     }
     
-    var date_ymd: String {
+    public var date_ymd: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 M월 d일"
         if let _ = self.date{
@@ -93,7 +91,7 @@ extension String{
         return ""
     }
     
-    var time_hour_minute: String {
+    public var time_hour_minute: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "a h:mm"
         if let _ = self.date{
@@ -102,7 +100,7 @@ extension String{
         return ""
     }
     
-    var date_time_hour_minute: String {
+    public var date_time_hour_minute: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "M.d ah:mm"
         if let _ = self.date{
@@ -111,7 +109,7 @@ extension String{
         return ""
     }
     
-    var toJsonDic: NSDictionary? {
+    public var toJsonDic: NSDictionary? {
         get{
             if let data = self.data(using: .utf8) {
                 return (try? JSONSerialization.jsonObject(with: data, options : .allowFragments)) as? NSDictionary
@@ -120,11 +118,11 @@ extension String{
         }
     }
     
-    var toDouble: Double?{
+    public var toDouble: Double?{
         Double(self)
     }
     
-    func parse<T: Decodable>(type: T.Type) -> T? {
+    public func parse<T: Decodable>(type: T.Type) -> T? {
         if let dic = self.toJsonDic {
             let decoder  = JSONDecoder()
             if let data = try? JSONSerialization.data(withJSONObject: dic , options: .prettyPrinted){
@@ -134,7 +132,7 @@ extension String{
         return nil
     }
     
-    func makeattributedTextText(highligtedColorCode: String, fontSize: CGFloat, basicColorCode: String = "#FFFFFF", textAligement: NSTextAlignment = .center, isBold: Bool = true) -> NSMutableAttributedString? {
+    public func makeattributedTextText(highligtedColorCode: String, fontSize: CGFloat, basicColorCode: String = "#FFFFFF", textAligement: NSTextAlignment = .center, isBold: Bool = true) -> NSMutableAttributedString? {
 //        let startStr = "<font color=\"\(basicColorCode)\">"
         let endStr = "</font>"
         let midStr = "<font color=\"\(highligtedColorCode)\">"
@@ -146,7 +144,7 @@ extension String{
         return replayedTextB.stringForHtml(fontSize: fontSize, textAligement: textAligement, defalutFontColorCode: basicColorCode, isBold: isBold)
     }
     
-    func stringForHtml(fontSize: CGFloat, textAligement: NSTextAlignment = .center, defalutFontColorCode: String = "#FFFFFF", isBold: Bool = true) -> NSMutableAttributedString? {
+    public func stringForHtml(fontSize: CGFloat, textAligement: NSTextAlignment = .center, defalutFontColorCode: String = "#FFFFFF", isBold: Bool = true) -> NSMutableAttributedString? {
 //        do {
             
             let startColorTag = "<font color=\"\(defalutFontColorCode)\">"
@@ -185,11 +183,11 @@ extension String{
 //        }
     }
     
-    var convertdOverSentence: String{
+    public var convertdOverSentence: String{
         return self.replacingOccurrences(of: "__", with: "\n")
     }
     
-    func replaceWords<T>( words: [T]) -> String?{
+    public func replaceWords<T>( words: [T]) -> String?{
         let speSentence = self.components(separatedBy: "??")
         
         if words.count == speSentence.count-1{
@@ -204,18 +202,18 @@ extension String{
         return nil
     }
     
-    var urlEncoded: String? {
+    public var urlEncoded: String? {
         self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
     
-    var toInt : Int {
+    public var toInt : Int {
         if let intv = Int(self) {
             return intv
         }
         return 0
     }
     
-    var asURL: URL?{
+    public var asURL: URL?{
         if let url = URL(string: self){
             return url
         }
@@ -223,7 +221,7 @@ extension String{
     }
     
     
-    func getPartyBold(font: UIFont, color: [UIColor], signal:[Character] = ["<", ">"]) -> NSAttributedString {
+    public func getPartyBold(font: UIFont, color: [UIColor], signal:[Character] = ["<", ">"]) -> NSAttributedString {
         var text = self
         
         let firstIndex = text.enumerated().filter{$0.element == signal.first}.map{$0.offset}
@@ -269,7 +267,7 @@ extension String{
     }
     
     
-    func getUnderlineColor(font: UIFont, color: [UIColor]) -> NSAttributedString {
+    public func getUnderlineColor(font: UIFont, color: [UIColor]) -> NSAttributedString {
         var text = self
         
         let firstIndex = text.enumerated().filter{$0.element == "<"}.map{$0.offset}
@@ -305,7 +303,7 @@ extension String{
         return attributedText
     }
     
-    func urlEncoded(denying deniedCharacters: CharacterSet) -> String? {
+    public func urlEncoded(denying deniedCharacters: CharacterSet) -> String? {
         return addingPercentEncoding(withAllowedCharacters: deniedCharacters.inverted)
     }
     

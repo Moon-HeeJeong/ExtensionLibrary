@@ -9,25 +9,25 @@ import Foundation
 import UIKit
 
 extension UIView {
-    var endPosY: CGFloat {
+    public var endPosY: CGFloat {
         get{
             return self.frame.size.height + self.frame.origin.y
         }
     }
-    var endPosX: CGFloat {
+    public  var endPosX: CGFloat {
         get{
             return self.frame.size.width + self.frame.origin.x
         }
     }
     
-    func addRound(cornerRadius: CGFloat,borderColor: UIColor ,borderWidth: CGFloat = 1) {
+    public func addRound(cornerRadius: CGFloat,borderColor: UIColor ,borderWidth: CGFloat = 1) {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor.cgColor
         self.clipsToBounds = true
     }
     
-    func addRoundSpecificedCorners(cornerRadius: CGFloat, byRoundingCorners: UIRectCorner, boderColor: UIColor = .clear, boderWidth: CGFloat = 1.5) {
+    public func addRoundSpecificedCorners(cornerRadius: CGFloat, byRoundingCorners: UIRectCorner, boderColor: UIColor = .clear, boderWidth: CGFloat = 1.5) {
         clipsToBounds = true
         if #available(iOS 11.0, *) {
             
@@ -52,7 +52,7 @@ extension UIView {
         
     }
     
-    func makeBottomShadow(shadowHeight: CGFloat = 5) {
+    public func makeBottomShadow(shadowHeight: CGFloat = 5) {
         let shadowPath = UIBezierPath()
         shadowPath.move(to: CGPoint(x: 0, y: self.bounds.height))
         shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
@@ -68,7 +68,7 @@ extension UIView {
     }
     
     @available(iOS 10.0, *)
-    func asImage() -> UIImage {
+    public func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)

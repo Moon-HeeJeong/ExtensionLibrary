@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIInterfaceOrientation{
-    var mask: UIInterfaceOrientationMask{
+    public var mask: UIInterfaceOrientationMask{
         switch self {
         case .unknown:
             return .all
@@ -24,7 +24,7 @@ extension UIInterfaceOrientation{
         }
     }
     
-    var deviceOrient: UIDeviceOrientation{
+    public var deviceOrient: UIDeviceOrientation{
         switch self {
         case .unknown:
             return .unknown

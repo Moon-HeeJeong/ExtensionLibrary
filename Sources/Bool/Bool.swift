@@ -8,7 +8,7 @@
 import Foundation
 
 extension Bool{
-    var letter: String{
+   public var letter: String{
         return self ? "Y" : "N"
     }
 }

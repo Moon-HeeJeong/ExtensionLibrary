@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-   func getPixelColor(point: CGPoint) -> UIColor? {
+    public func getPixelColor(point: CGPoint) -> UIColor? {
        guard let cgImage = self.cgImage, let dataProvider = cgImage.dataProvider,  let pixelData = dataProvider.data else {
            return nil
        }
@@ -40,7 +40,7 @@ extension UIImage {
    
    
    
-   func pixel(at point: CGPoint) -> (UInt8, UInt8, UInt8, UInt8)? {
+    public func pixel(at point: CGPoint) -> (UInt8, UInt8, UInt8, UInt8)? {
        let width = Int(self.size.width)
        let height = Int(self.size.height)
        let x = Int(point.x)
@@ -56,7 +56,7 @@ extension UIImage {
        return (pointer[offset], pointer[offset + 1], pointer[offset + 2], pointer[offset + 3])
    }
    
-   func cropImage(totalImageCount : Int) -> [UIImage] {
+    public func cropImage(totalImageCount : Int) -> [UIImage] {
        
        var images = [UIImage]()
        
@@ -74,12 +74,12 @@ extension UIImage {
        return images
    }
     
-    func cropImage(oneHeight :CGFloat) -> [UIImage] {
+    public func cropImage(oneHeight :CGFloat) -> [UIImage] {
         let totalImageCount = Int(self.size.height/(oneHeight/UIScreen.main.scale))
         return self.cropImage(totalImageCount: totalImageCount)
     }
    
-   var cropImageFitHeight: UIImage {
+    public var cropImageFitHeight: UIImage {
        get{
            let scaleFactor: CGFloat = UIScreen.main.scale
            let imageSize = CGSize(width: self.size.width * scaleFactor, height: self.size.height * scaleFactor)
@@ -95,7 +95,7 @@ extension UIImage {
        }
    }
    
-   func reSize(with newSize: CGSize) -> UIImage?{
+   public func reSize(with newSize: CGSize) -> UIImage?{
        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()

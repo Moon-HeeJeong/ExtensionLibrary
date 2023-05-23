@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UITableView{
-    var cells:[UITableViewCell] {
+    public var cells:[UITableViewCell] {
         return (0..<self.numberOfSections).indices.map { (sectionIndex:Int) -> [UITableViewCell] in
             return (0..<self.numberOfRows(inSection: sectionIndex)).indices.compactMap{ (rowIndex:Int) -> UITableViewCell? in
                 return self.cellForRow(at: IndexPath(row: rowIndex, section: sectionIndex))
@@ -17,7 +17,7 @@ extension UITableView{
             }.flatMap{$0}
     }
     
-    func delayedShowUpCells(){
+    public func delayedShowUpCells(){
         var delyaedTime: TimeInterval = 0
         for cell in self.visibleCells {
             let originPosY = cell.frame.origin.y
@@ -33,7 +33,7 @@ extension UITableView{
         }
     }
     
-    func cellHidden(indexPath: IndexPath, isHidden: Bool){
+    public func cellHidden(indexPath: IndexPath, isHidden: Bool){
         self.cellForRow(at: indexPath)?.isHidden = isHidden
     }
 }
